@@ -1,8 +1,20 @@
-import * as Icons from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import {
+  Code2,
+  Database,
+  GraduationCap,
+  LayoutDashboard,
+  Sparkles,
+  type LucideIcon,
+} from "lucide-react";
 
-export function resolveIcon(iconName: string): LucideIcon {
-  const fallback = Icons.GraduationCap;
-  const icon = Icons[iconName as keyof typeof Icons];
-  return typeof icon === "function" ? icon : fallback;
+const iconMap: Record<string, LucideIcon> = {
+  Code2,
+  Database,
+  GraduationCap,
+  LayoutDashboard,
+  Sparkles,
+};
+
+export function resolveIcon(iconName?: string | null): LucideIcon {
+  return iconMap[iconName ?? ""] ?? GraduationCap;
 }
